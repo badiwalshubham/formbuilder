@@ -7,21 +7,18 @@ import SideImg from '../assets/th.jpg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
-// import { useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
 
-  // const {register,handleSubmit,formState:{errors}}=useForm()
-  const onSubmit=(data)=>{
-    console.log(data);
-  }
+  
 
-  const history = useRouter();
+  const history = useRouter(); 
 
   const [inpval, setInpval] = useState({
       name: "",
       email: "",
-      date: "",
       password: ""
   })
 
@@ -48,7 +45,7 @@ const Signup = () => {
   const addData = (e) => {
       e.preventDefault();
 
-      const { name, email, date, password } = inpval;
+      const { name, email, password } = inpval;
 
       if (name === "") {
           toast.error(' name field is requred!', {
@@ -62,10 +59,6 @@ const Signup = () => {
           toast.error('plz enter valid email addres', {
               position: "top-center",
           });
-      } else if (date === "") {
-          toast.error('date field is requred', {
-              position: "top-center",
-          });
       } else if (password === "") {
           toast.error('password field is requred', {
               position: "top-center",
@@ -76,17 +69,22 @@ const Signup = () => {
           });
       } else {
           console.log("data added succesfully");
-          history("/login")
+          history.push('/login')
           localStorage.setItem("useryoutube", JSON.stringify([...data, inpval]));
 
       }
 
   }
 
+  // const {register,handleSubmit,formState:{errors}}=useForm()
+  const onSubmit=(data)=>{
+    console.log(data);
+  }
+
 
   return (
     <div className="Auth">
-      <Image src={SideImg} alt="" />
+      <Image src={SideImg} alt="" onSubmit={onSubmit} />
 
       <form action="" method="post"   >
         <Typography variant='h4'>Sign Up</Typography>
