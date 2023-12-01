@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardContent, CardHeader, } from '@mui/material';
+import { Box, Card, CardContent, CardHeader, CardMedia, } from '@mui/material';
 import Button from '@mui/material/Button';
 
 const Landingpage = () => {
@@ -60,20 +60,20 @@ const Landingpage = () => {
 
                 {
                     logindata[0].date === todayDate ? 
-                    <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>{logindata[0].name} 😄</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>Wish you many many happy returns of the day ! 🍰</Modal.Body>
-                            <Modal.Footer>
+                    <Card show={show} onHide={handleClose}>
+                            <CardHeader closeButton>
+                                <title>{logindata[0].name} 😄</title>
+                            </CardHeader>
+                            <CardContent>Wish you many many happy returns of the day ! 🍰</CardContent>
+                            <div>
                                 <Button variant="secondary" onClick={handleClose}>
                                     Close
                                 </Button>
                                 <Button variant="primary" onClick={handleClose}>
                                     Save Changes
                                 </Button>
-                            </Modal.Footer>
-                        </Modal>:""
+                            </div>
+                        </Card>:""
                 }   
                      
                     </>
