@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Box, Card, CardContent, CardHeader, CardMedia, } from '@mui/material';
-import Button from '@mui/material/Button';
 import Dashboard from '../app/Dashboard/page'
+import { Card, CardContent, CardHeader, Button, Modal, Typography, Box, AppBar, Toolbar, Chip } from '@mui/material';
+
 
 const Landingpage = () => {
 
@@ -15,7 +15,7 @@ const Landingpage = () => {
     const [show, setShow] = useState(false);
 
     var todayDate = new Date().toISOString().slice(0, 10);
-  
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -24,7 +24,7 @@ const Landingpage = () => {
         const getuser = localStorage.getItem("user_login");
         if (getuser && getuser.length) {
             const user = JSON.parse(getuser);
-         
+
             setLoginData(user);
 
 
@@ -41,7 +41,7 @@ const Landingpage = () => {
         }
     }
 
-    const userlogout = ()=>{
+    const userlogout = () => {
         localStorage.removeItem("user_login")
         history.push('/login');
     }
@@ -55,29 +55,22 @@ const Landingpage = () => {
             {
                 logindata.length === 0 ? "Error" :
                     <>
-                        <h1>detials page</h1>
-                        <h1>{logindata[0].name}</h1>
-                        <Button onClick={userlogout}>LogOut</Button>
-                        <Dashboard/>
-
-                {
-                    logindata[0].date === todayDate ? 
-                    <Card show={show} onHide={handleClose}>
-                            <CardHeader closeButton>
-                                <title>{logindata[0].name} 😄</title>
-                            </CardHeader>
-                            <CardContent>Wish you many many happy returns of the day ! 🍰</CardContent>
-                            <div>
-                                <Button variant="secondary" onClick={handleClose}>
-                                    Close
-                                </Button>
-                                <Button variant="primary" onClick={handleClose}>
-                                    Save Changes
-                                </Button>
-                            </div>
-                        </Card>:""
-                }   
-                     
+                        <AppBar position="fixed" >
+                            <Toolbar style={{ marginBottom: 0 }}>
+                                <Typography variant="h6">Dyano Form Builder </Typography>
+                                <Box flexGrow={1} />
+                                <Chip sx={{ mr: '2rem', backgroundColor: 'white' }} color='info'
+                                    label={logindata.length > 0 && logindata[0].name}
+                                    variant="outlined"
+                                />  
+                                 <Button sx={{ mr: '2rem', backgroundColor: 'white' }}> Form &nbsp; <Dashboard  /> </Button>
+                                <Button sx={{ mr: '2rem', backgroundColor: 'white' }} onClick={userlogout}>LogOut</Button>
+                            </Toolbar>
+                        </AppBar>
+                       
+                       
+                         
+                        
                     </>
             }
         </>

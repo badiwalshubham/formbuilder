@@ -1,7 +1,7 @@
 // function component
 "use client";
 import React from 'react';
-import  { Creator }  from '@/components/Creator';
+import  { Creator }  from '../../components/Creator';
 
 const Creatorpage = () => {
 
