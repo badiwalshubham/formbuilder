@@ -6,8 +6,8 @@ import { Creator } from '@/components/Creator'
 export default function Home() {
   return (
     <div>  
-      
-      <Dashboard/>
+      <Signup/>
+      {/* <Dashboard/> */}
     </div>
   )
 }
