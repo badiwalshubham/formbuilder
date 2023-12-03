@@ -88,6 +88,13 @@ body {
   align-items: center;
 }
 
+.svc-creator__banner{
+  display: none!important;
+}
+
+.sa-commercial{
+  display: none!important;
+}
 /* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
