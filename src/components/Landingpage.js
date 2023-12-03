@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Box, Card, CardContent, CardHeader, CardMedia, } from '@mui/material';
 import Button from '@mui/material/Button';
+import Dashboard from '../app/Dashboard/page'
 
 const Landingpage = () => {
 
@@ -57,6 +58,7 @@ const Landingpage = () => {
                         <h1>detials page</h1>
                         <h1>{logindata[0].name}</h1>
                         <Button onClick={userlogout}>LogOut</Button>
+                        <Dashboard/>
 
                 {
                     logindata[0].date === todayDate ? 
