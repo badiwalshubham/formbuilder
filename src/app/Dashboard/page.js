@@ -45,22 +45,10 @@ widgets.bootstrapslider(Survey);
 
 export default function SurveyJSReactApplication() {
   return (
-    
-      <div>
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-           
-            <ul className="nav navbar-nav">
-              <li>
-              <Link href="/Form">Survey</Link>
-              </li>
-              <li>
-              <Link href="/Creator">Creator</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    
+
+    <div>
+        <Link href="/Creatorpage">Creator</Link>
+    </div>
+
   );
 }
